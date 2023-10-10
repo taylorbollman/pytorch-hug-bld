@@ -1,0 +1,8 @@
+version: '3'
+services:
+  my-service:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "7860:7860"

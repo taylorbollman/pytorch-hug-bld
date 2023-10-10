@@ -19,9 +19,12 @@ EXPOSE 7860
 # Copy current directory to /code in the container
 COPY . .
 
-# Copy SSH keys (Use cautiously)
-COPY /home/taylorbollman/.ssh/taylorfirstkey /root/.ssh/taylorfirstkey
-RUN chmod 600 /root/.ssh/taylorfirstkey
+# Copy SSH keys
+
+COPY taylorfirstkey /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+
+
 
 
 

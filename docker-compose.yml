@@ -1,8 +1,8 @@
 version: '3'
 services:
-  my-service:
+  tb-dev-container:  # Rename to something more descriptive if needed
     build: .
     volumes:
       - .:/code
-    ports:
-      - "7860:7860"
+    env_file:
+      - .env  # If you're using environment variables, put them in a file named .env

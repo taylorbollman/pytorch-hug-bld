@@ -20,9 +20,12 @@ EXPOSE 7860
 COPY . .
 
 # Copy SSH keys
+COPY /home/taylorbollman/.ssh/taylorfirstkey /root/.ssh/taylorfirstkey
+RUN chmod 600 /root/.ssh/taylorfirstkey
 
-COPY taylorfirstkey /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa
+
+# COPY taylorfirstkey /root/.ssh/id_rsa
+# RUN chmod 600 /root/.ssh/id_rsa
 
 
 

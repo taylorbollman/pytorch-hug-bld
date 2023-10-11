@@ -16,8 +16,13 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 # Copy current directory to /code in the container
 COPY . .
 
-# Copy SSH public key for incoming SSH
-COPY /home/taylorbollman/.ssh/authorized_keys /root/.ssh/authorized_keys
+# Ensure /root/.ssh/ exists
+RUN mkdir -p /root/.ssh/
+
+# Move the authorized_keys file into place
+RUN mv /code/authorized_keys /root/.ssh/authorized_keys
+
+
 
 
 

@@ -13,19 +13,14 @@ COPY ./requirements.txt /code/requirements.txt
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-# Expose port need for Docker space on huggingface
-EXPOSE 7860
-
 # Copy current directory to /code in the container
 COPY . .
 
-# Copy SSH keys
-COPY /home/taylorbollman/.ssh/taylorfirstkey /root/.ssh/taylorfirstkey
-RUN chmod 600 /root/.ssh/taylorfirstkey
+# Copy SSH public key for incoming SSH
+COPY /home/taylorbollman/.ssh/authorized_keys /root/.ssh/authorized_keys
 
 
-# COPY taylorfirstkey /root/.ssh/id_rsa
-# RUN chmod 600 /root/.ssh/id_rsa
+
 
 
 

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   my_hugtranformer_service:
     image: gpu-and-tranformers-img
@@ -12,8 +12,7 @@ services:
       - "ENV_VAR=value"
     ports:
       - "8000:8000"  # Map port 8000 inside the container to port 8000 on the host
-    deploy:
-      resources:
-        reservations:
-          memory: 4G
-    runtime: nvidia  # Enable NVIDIA runtime for GPU support
+    devices:
+      - "/dev/nvidia0:/dev/nvidia0"
+      - "/dev/nvidiactl:/dev/nvidiactl"
+      - "/dev/nvidia-uvm:/dev/nvidia-uvm"

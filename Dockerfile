@@ -4,8 +4,10 @@ FROM huggingface/transformers-pytorch-gpu
 # Set working directory
 WORKDIR /code
 
-# Install git (Optional)
-RUN apt-get update && apt-get install -y git
+# Update apt-get, install needed tools, and clean up cache
+RUN apt-get update && \
+    apt-get install -y build-essential git && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy only the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /code/requirements.txt
